@@ -17,9 +17,10 @@ from dash.dependencies import Input, Output
 warnings.filterwarnings( "ignore" )
 
 # Import data
-grid = pd.read_csv( r"C:\Users\csucuogl\Desktop\Stew_TNOC\DATA\grid.csv" )
-prim = pd.read_csv( r"C:\Users\csucuogl\Desktop\Stew_TNOC\DATA\prim.csv" )
-eks = pd.read_csv( r"C:\Users\csucuogl\Desktop\Stew_TNOC\DATA\prim_Ek.csv" )
+folder = 'https://raw.githubusercontent.com/PrattSAVI/Stew_TNOC/main/DATA/'
+grid = pd.read_csv( folder + "grid.csv" )
+prim = pd.read_csv( folder + "prim.csv" )
+eks = pd.read_csv( folder + "prim_Ek.csv" )
 
 # Include Groups Bigger then NYC to time
 eks['PrimFocus'] = eks['PrimFocus'].astype(str)
@@ -27,7 +28,7 @@ eks['PrimFocus'] = [r.split(' and')[0] for i,r in eks.PrimFocus.iteritems()]
 eks['PrimFocus'] = [r.split(',')[0] for i,r in eks.PrimFocus.iteritems()]
 eks = eks[ eks['PrimFocus'] != 'Other']
 
-with open( r"C:\Users\csucuogl\Desktop\Stew_TNOC\DATA\Geo_Grid_wgs843.geojson" ) as f:
+with open( r"C:\Users\csucuogl\Documents\GitHub\Stew_TNOC\DATA\Geo_Grid_wgs843.geojson" ) as f:
   counties = json.load(f)
 
 #Convert data to list like geojson
