@@ -24,6 +24,8 @@ grid = pd.read_csv( folder + "grid.csv" )
 prim = pd.read_csv( folder + "prim.csv" )
 eks = pd.read_csv( folder + "prim_Ek.csv" )
 
+print("data loaded")
+
 # Include Groups Bigger then NYC to time
 eks['PrimFocus'] = eks['PrimFocus'].astype(str)
 eks['PrimFocus'] = [r.split(' and')[0] for i,r in eks.PrimFocus.iteritems()]
@@ -311,7 +313,7 @@ app.layout = html.Div( #Main Div Container
         )
 
 #For Heroku
-#server = app.server
+server = app.server
 
 # Add Callbacks
 @app.callback( # Filter Bubble plot based on dropdown selection
