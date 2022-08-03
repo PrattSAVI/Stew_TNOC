@@ -16,6 +16,8 @@ import dash_html_components as html
 from dash.dependencies import Input, Output
 warnings.filterwarnings( "ignore" )
 
+print("libs loaded")
+
 # Import data
 folder = 'https://raw.githubusercontent.com/PrattSAVI/Stew_TNOC/main/DATA/'
 grid = pd.read_csv( folder + "grid.csv" )
@@ -309,7 +311,7 @@ app.layout = html.Div( #Main Div Container
         )
 
 #For Heroku
-server = app.server
+#server = app.server
 
 # Add Callbacks
 @app.callback( # Filter Bubble plot based on dropdown selection
