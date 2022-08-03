@@ -308,6 +308,9 @@ app.layout = html.Div( #Main Div Container
         
         )
 
+#For Heroku
+server = app.server
+
 # Add Callbacks
 @app.callback( # Filter Bubble plot based on dropdown selection
     dash.dependencies.Output('g_bubble', 'figure'),
