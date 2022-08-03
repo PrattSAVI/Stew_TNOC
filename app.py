@@ -14,6 +14,7 @@ import dash
 import dash_core_components as dcc
 import dash_html_components as html
 from dash.dependencies import Input, Output
+import requests
 warnings.filterwarnings( "ignore" )
 
 print("libs loaded")
@@ -32,8 +33,9 @@ eks['PrimFocus'] = [r.split(' and')[0] for i,r in eks.PrimFocus.iteritems()]
 eks['PrimFocus'] = [r.split(',')[0] for i,r in eks.PrimFocus.iteritems()]
 eks = eks[ eks['PrimFocus'] != 'Other']
 
-with open( r"C:\Users\csucuogl\Documents\GitHub\Stew_TNOC\DATA\Geo_Grid_wgs843.geojson" ) as f:
-  counties = json.load(f)
+link = 'https://raw.githubusercontent.com/PrattSAVI/Stew_TNOC/main/DATA/Geo_Grid_wgs843.geojson'
+f = requests.get(link)
+counties = f.json()
 
 #Convert data to list like geojson
 sources=[{ "type": "Feature", 'geometry': feat['geometry'] , 'id':feat['properties']['id_str'] } for feat in counties['features']]
